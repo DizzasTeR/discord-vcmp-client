@@ -1,0 +1,14 @@
+# Target labels
+ asio-download
+# Source files and their labels
+/root/repos/sleepy-discord-vcmp-client/bin/asio-download/CMakeFiles/asio-download
+/root/repos/sleepy-discord-vcmp-client/bin/asio-download/CMakeFiles/asio-download.rule
+/root/repos/sleepy-discord-vcmp-client/bin/asio-download/CMakeFiles/asio-download-complete.rule
+/root/repos/sleepy-discord-vcmp-client/bin/asio-download/asio-download-prefix/src/asio-download-stamp/asio-download-install.rule
+/root/repos/sleepy-discord-vcmp-client/bin/asio-download/asio-download-prefix/src/asio-download-stamp/asio-download-mkdir.rule
+/root/repos/sleepy-discord-vcmp-client/bin/asio-download/asio-download-prefix/src/asio-download-stamp/asio-download-download.rule
+/root/repos/sleepy-discord-vcmp-client/bin/asio-download/asio-download-prefix/src/asio-download-stamp/asio-download-patch.rule
+/root/repos/sleepy-discord-vcmp-client/bin/asio-download/asio-download-prefix/src/asio-download-stamp/asio-download-configure.rule
+/root/repos/sleepy-discord-vcmp-client/bin/asio-download/asio-download-prefix/src/asio-download-stamp/asio-download-build.rule
+/root/repos/sleepy-discord-vcmp-client/bin/asio-download/asio-download-prefix/src/asio-download-stamp/asio-download-test.rule
+/root/repos/sleepy-discord-vcmp-client/bin/asio-download/asio-download-prefix/src/asio-download-stamp/asio-download-skip-update.rule

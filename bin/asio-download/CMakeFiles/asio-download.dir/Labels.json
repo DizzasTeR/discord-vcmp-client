@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/asio-download/CMakeFiles/asio-download"
+		},
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/asio-download/CMakeFiles/asio-download.rule"
+		},
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/asio-download/CMakeFiles/asio-download-complete.rule"
+		},
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/asio-download/asio-download-prefix/src/asio-download-stamp/asio-download-install.rule"
+		},
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/asio-download/asio-download-prefix/src/asio-download-stamp/asio-download-mkdir.rule"
+		},
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/asio-download/asio-download-prefix/src/asio-download-stamp/asio-download-download.rule"
+		},
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/asio-download/asio-download-prefix/src/asio-download-stamp/asio-download-patch.rule"
+		},
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/asio-download/asio-download-prefix/src/asio-download-stamp/asio-download-configure.rule"
+		},
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/asio-download/asio-download-prefix/src/asio-download-stamp/asio-download-build.rule"
+		},
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/asio-download/asio-download-prefix/src/asio-download-stamp/asio-download-test.rule"
+		},
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/asio-download/asio-download-prefix/src/asio-download-stamp/asio-download-skip-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"asio-download"
+		],
+		"name" : "asio-download"
+	}
+}

@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/CMakeFiles/websocketpp-download"
+		},
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/CMakeFiles/websocketpp-download.rule"
+		},
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/CMakeFiles/websocketpp-download-complete.rule"
+		},
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/websocketpp-download-prefix/src/websocketpp-download-stamp/websocketpp-download-install.rule"
+		},
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/websocketpp-download-prefix/src/websocketpp-download-stamp/websocketpp-download-mkdir.rule"
+		},
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/websocketpp-download-prefix/src/websocketpp-download-stamp/websocketpp-download-download.rule"
+		},
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/websocketpp-download-prefix/src/websocketpp-download-stamp/websocketpp-download-patch.rule"
+		},
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/websocketpp-download-prefix/src/websocketpp-download-stamp/websocketpp-download-configure.rule"
+		},
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/websocketpp-download-prefix/src/websocketpp-download-stamp/websocketpp-download-build.rule"
+		},
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/websocketpp-download-prefix/src/websocketpp-download-stamp/websocketpp-download-test.rule"
+		},
+		{
+			"file" : "/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/websocketpp-download-prefix/src/websocketpp-download-stamp/websocketpp-download-skip-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"websocketpp-download"
+		],
+		"name" : "websocketpp-download"
+	}
+}

@@ -1,0 +1,14 @@
+# Target labels
+ websocketpp-download
+# Source files and their labels
+/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/CMakeFiles/websocketpp-download
+/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/CMakeFiles/websocketpp-download.rule
+/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/CMakeFiles/websocketpp-download-complete.rule
+/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/websocketpp-download-prefix/src/websocketpp-download-stamp/websocketpp-download-install.rule
+/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/websocketpp-download-prefix/src/websocketpp-download-stamp/websocketpp-download-mkdir.rule
+/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/websocketpp-download-prefix/src/websocketpp-download-stamp/websocketpp-download-download.rule
+/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/websocketpp-download-prefix/src/websocketpp-download-stamp/websocketpp-download-patch.rule
+/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/websocketpp-download-prefix/src/websocketpp-download-stamp/websocketpp-download-configure.rule
+/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/websocketpp-download-prefix/src/websocketpp-download-stamp/websocketpp-download-build.rule
+/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/websocketpp-download-prefix/src/websocketpp-download-stamp/websocketpp-download-test.rule
+/root/repos/sleepy-discord-vcmp-client/bin/websocketpp-download/websocketpp-download-prefix/src/websocketpp-download-stamp/websocketpp-download-skip-update.rule
