@@ -97,13 +97,6 @@ void run_client() {
 	}
 }
 
-std::string readSettings() {
-	std::ifstream file("settings.json");
-	std::stringstream buffer;
-	buffer << file.rdbuf();
-	return buffer.str();
-}
-
 extern "C" EXPORT unsigned int VcmpPluginInit(PluginFuncs* pluginFuncs, PluginCallbacks* pluginCalls, PluginInfo* pluginInfo) {
 	g_Funcs = pluginFuncs;
 	g_Calls = pluginCalls;
