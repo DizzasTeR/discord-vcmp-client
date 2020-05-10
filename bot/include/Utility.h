@@ -22,7 +22,7 @@ void SendClientMessageToAll(const std::string& message) {
 
 void SendDiscordMessage(const std::string& message) {
 	for(std::vector<long long int>::const_iterator it = Settings::channels.begin(); it != Settings::channels.end(); it++) {
-		Bot->sendMessage(*it, message);
+		Bot->sendMessage(*it, message, SleepyDiscord::Async);
 	}
 }
 

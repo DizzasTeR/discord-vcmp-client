@@ -2,6 +2,7 @@
 #include "pch.h"
 
 namespace Settings {
+	bool callSquirrelEvents = false;
 	bool defaultMessages = true;
 	bool defaultCommands = true;
 	bool specialNicks = false;

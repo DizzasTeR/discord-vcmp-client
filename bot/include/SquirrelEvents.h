@@ -75,7 +75,7 @@ namespace SquirrelEvents {
 		sqapi->settop(sqvm, top);
 	}
 
-	void SQ_onMemberEdit(const std::string& data, const std::string& username, const std::string& nick) {
+	void SQ_onMemberEdit(const std::string& username, const std::string& nick) {
 		if(sqvm == NULL) return;
 		int top = (int)sqapi->gettop(sqvm);
 		sqapi->pushroottable(sqvm);
@@ -83,10 +83,9 @@ namespace SquirrelEvents {
 		if(SQ_FAILED(sqapi->get(sqvm, -2)))
 			return;
 		sqapi->pushroottable(sqvm);
-		sqapi->pushstring(sqvm, (const SQChar*)data.c_str(), -1);
 		sqapi->pushstring(sqvm, (const SQChar*)username.c_str(), -1);
 		sqapi->pushstring(sqvm, (const SQChar*)nick.c_str(), -1);
-		if(SQ_FAILED(sqapi->call(sqvm, 4, SQFalse, SQFalse)))
+		if(SQ_FAILED(sqapi->call(sqvm, 3, SQFalse, SQFalse)))
 			return;
 		sqapi->settop(sqvm, top);
 	}
