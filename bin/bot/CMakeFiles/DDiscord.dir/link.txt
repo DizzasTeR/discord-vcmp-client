@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC   -shared -Wl,-soname,libDDiscord.so -o libDDiscord.so CMakeFiles/DDiscord.dir/sleepy-discord-client.cpp.o ../sleepy-discord/sleepy_discord/libsleepy-discord.a ../lib/libcpr.a ../lib/libcurl.a -ldl -lpthread /usr/lib/x86_64-linux-gnu/libssl.so /usr/lib/x86_64-linux-gnu/libcrypto.so -lssl -lcrypto -pthread 
