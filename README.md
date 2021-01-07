@@ -9,8 +9,7 @@ Yes the source code is ugly, but then, I never told you to look at the source, a
 	"prefix" : "!",
 	"status" : "Bot Status Message",
 	
-	"defaultMessages" : true,
-	"defaultCommands" : true,
+	"defaultMode" : true, // Enables default messages, default commands and DISABLES SQUIRREL EVENTS
 	"specialNicks" : false,
 	"specialMessages" : true,
 
