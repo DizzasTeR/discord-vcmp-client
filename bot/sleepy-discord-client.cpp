@@ -19,7 +19,7 @@ class DiscordClient : public SleepyDiscord::DiscordClient {
 public:
 	using SleepyDiscord::DiscordClient::DiscordClient;
 	void onReady(std::string* jsonMessage) {
-		if (Settings::callSquirrelEvents)
+		if (!Settings::defaultMode)
 			SquirrelEvents::SQ_onDiscordConnect(*jsonMessage);
 		//updateStatus(Settings::status);
 	}
@@ -28,10 +28,11 @@ public:
 		if(std::string(message.serverID).size() == 0)
 			return;
 
-		if (Settings::callSquirrelEvents)
+		if (!Settings::defaultMode)
+		{
 			SquirrelEvents::SQ_onDiscordChannelMessage(std::string(message.serverID), std::string(message.channelID), std::string(message.author.ID), message.author.username, message.content);
-		if(!Settings::defaultCommands)
 			return;
+		}
 
 		if(message.startsWith(Settings::prefix + "say")) {
 			if(!Settings::specialNicks && !Settings::verifyCharacters(message.author.username)) {
@@ -73,16 +74,15 @@ public:
 		}
 	}
 
-	void onServer(SleepyDiscord::Server jsonMessage) { SquirrelEvents::SQ_onDiscordServer(jsonMessage.name); }
-	void onChannel(std::string* jsonMessage) { SquirrelEvents::SQ_onDiscordChannel(*jsonMessage); }
+	void onServer(SleepyDiscord::Server jsonMessage) { if (!Settings::defaultMode) SquirrelEvents::SQ_onDiscordServer(jsonMessage.name); }
+	void onChannel(std::string* jsonMessage) { if (!Settings::defaultMode) SquirrelEvents::SQ_onDiscordChannel(*jsonMessage); }
 	
 	void onEditMember(SleepyDiscord::Snowflake<SleepyDiscord::Server> serverID, SleepyDiscord::User user, std::vector<SleepyDiscord::Snowflake<SleepyDiscord::Role>> nroles, std::string nnick) {
-		if (Settings::callSquirrelEvents)
-			SquirrelEvents::SQ_onMemberEdit(user.username, nnick);
+		if (!Settings::defaultMode) SquirrelEvents::SQ_onMemberEdit(user.username, nnick);
 	}
 	
-	void onQuit() { if(Settings::callSquirrelEvents) SquirrelEvents::SQ_onDiscordQuit(); }
-	void onDisconnect() { if(Settings::callSquirrelEvents) SquirrelEvents::SQ_onDiscordDisconnect(); }
+	void onQuit() { if (!Settings::defaultMode) SquirrelEvents::SQ_onDiscordQuit(); }
+	void onDisconnect() { if (!Settings::defaultMode) SquirrelEvents::SQ_onDiscordDisconnect(); }
 
 };
 SleepyDiscord::DiscordClient* Bot;
@@ -91,7 +91,8 @@ SleepyDiscord::DiscordClient* Bot;
 
 void run_client() {
 	try {
-		Bot = new DiscordClient(Settings::token, 3);
+		Bot = new DiscordClient(Settings::token);
+		Bot->run();
 	} catch(std::exception _e) {
 		std::cout << _e.what() << std::endl;
 	}
@@ -102,7 +103,7 @@ extern "C" EXPORT unsigned int VcmpPluginInit(PluginFuncs* pluginFuncs, PluginCa
 	g_Calls = pluginCalls;
 	g_Info = pluginInfo;
 
-	pluginInfo->pluginVersion = 0x1001;
+	pluginInfo->pluginVersion = 0x1005;
 	pluginInfo->apiMajorVersion = PLUGIN_API_MAJOR;
 	pluginInfo->apiMinorVersion = PLUGIN_API_MINOR;
 
@@ -112,13 +113,12 @@ extern "C" EXPORT unsigned int VcmpPluginInit(PluginFuncs* pluginFuncs, PluginCa
 	json settings = read_json_file("settings.json");
 	Settings::loadSettings(settings);
 
-	if (Settings::defaultMessages) {
+	if (Settings::defaultMode) {
 		pluginCalls->OnPlayerConnect = onPlayerConnect;
 		pluginCalls->OnPlayerDisconnect = onPlayerDisconnect;
 		pluginCalls->OnPlayerDeath = onPlayerWasted;
 		pluginCalls->OnPlayerMessage = onPlayerMessage;
 	}
-	else Settings::callSquirrelEvents = true;
 
 	client_thread = new std::thread(run_client);
 	return 1;

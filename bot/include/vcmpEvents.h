@@ -1,6 +1,7 @@
 #pragma once
 #include "pch.h"
 extern SleepyDiscord::DiscordClient* Bot;
+extern std::thread* client_thread;
 
 void OnSquirrelScriptLoad() {
 	size_t size;
@@ -31,6 +32,9 @@ uint8_t OnInternalCommand(uint32_t uCmdType, const char* pszText) {
 void onServerShutdown() {
 	Bot->quit();
 	delete Bot;
+
+	client_thread->detach();
+	delete client_thread;
 }
 
 /* General events */

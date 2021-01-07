@@ -1,8 +1,8 @@
 cmake_minimum_required (VERSION 3.6)
 project(DDiscord)
 
+set(BUILD_SHARED_LIBS OFF)
 option(BUILD_64 "" ON)
-
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 #include(ExternalProject)

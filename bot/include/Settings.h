@@ -2,7 +2,7 @@
 #include "pch.h"
 
 namespace Settings {
-	bool callSquirrelEvents = false;
+	bool defaultMode = true;
 	bool defaultMessages = true;
 	bool defaultCommands = true;
 	bool specialNicks = false;
@@ -33,12 +33,11 @@ namespace Settings {
 		if(settings.find("status") != settings.end())
 			Settings::status = settings["status"].get<std::string>();
 
-		if(settings.find("defaultMessages") != settings.end())
-			Settings::defaultMessages = settings["defaultMessages"];
-
-		if(settings.find("defaultCommands") != settings.end()){
-			Settings::defaultCommands = settings["defaultCommands"];
-			Settings::callSquirrelEvents = !settings["defaultCommands"];
+		if (settings.find("defaultMode") != settings.end())
+		{
+			Settings::defaultMode = settings["defaultMode"];
+			Settings::defaultMessages = settings["defaultMode"];
+			Settings::defaultCommands = settings["defaultMode"];
 		}
 
 		if(settings.find("specialNicks") != settings.end())
