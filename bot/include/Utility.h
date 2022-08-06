@@ -2,7 +2,7 @@
 #include "pch.h"
 
 extern PluginFuncs* g_Funcs;
-extern SleepyDiscord::DiscordClient* Bot;
+extern dpp::cluster* bot;
 
 json read_json_file(std::string file) {
 	std::ifstream ifs(file, std::ifstream::in);
@@ -21,8 +21,10 @@ void SendClientMessageToAll(const std::string& message) {
 }
 
 void SendDiscordMessage(const std::string& message) {
-	for(std::vector<long long int>::const_iterator it = Settings::channels.begin(); it != Settings::channels.end(); it++) {
-		Bot->sendMessage(*it, message, SleepyDiscord::Async);
+	for(auto it = Settings::channels.begin(); it != Settings::channels.end(); it++) {
+		std::cout << *it << '\n';
+		dpp::message msg(*it, message);
+		bot->message_create(msg);
 	}
 }
 

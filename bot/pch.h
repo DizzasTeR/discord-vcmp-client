@@ -6,9 +6,10 @@
 #include <thread>
 #include <vector>
 #include <fstream>
-#include <sleepy_discord/websocketpp_websocket.h>
+#include <filesystem>
+#include <dpp/dpp.h>
+#include <dpp/nlohmann/json.hpp>
 
-#include <nlohmann/json.hpp>
 #include <SQImports.h>
 #include <SQModule.h>
 #include <squirrel.h>

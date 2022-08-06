@@ -1,18 +1,23 @@
 add_library(DDiscord SHARED
-   	sleepy-discord-client.cpp
-
+   	discord-client.cpp
 )
 
-if(BUILD_64)
-	target_compile_options(DDiscord PRIVATE -D_SQ64)
-else()
-	set_target_properties(DDiscord PROPERTIES COMPILE_FLAGS "-m32" LINK_FLAGS "-m32")
-endif()
+# set c++ standard 17
+set_target_properties(DDiscord PROPERTIES
+   	CXX_STANDARD 17
+)
 
 target_include_directories(DDiscord
 	PRIVATE
+		${PROJECT_SOURCE_DIR}/include/dpp-10.0
 		${PROJECT_SOURCE_DIR}/bot
 		${PROJECT_SOURCE_DIR}/bot/include
 )
 
-target_link_libraries(DDiscord sleepy-discord)
+target_link_directories(DDiscord PRIVATE ${PROJECT_SOURCE_DIR}/lib/dpp-10.0)
+
+if("${CMAKE_GENERATOR_PLATFORM}" STREQUAL "x64")
+	target_link_libraries(DDiscord dpp.lib)
+else()
+	target_link_libraries(DDiscord dpp32.lib)
+endif()

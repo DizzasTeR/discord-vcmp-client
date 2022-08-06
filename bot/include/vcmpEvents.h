@@ -1,7 +1,15 @@
 #pragma once
 #include "pch.h"
-extern SleepyDiscord::DiscordClient* Bot;
-extern std::thread* client_thread;
+
+extern dpp::cluster* bot;
+
+void OnServerShutdown() {
+	if(bot != nullptr) {
+		bot->shutdown();
+		delete bot;
+		bot = nullptr;
+	}
+}
 
 void OnSquirrelScriptLoad() {
 	size_t size;
@@ -29,35 +37,27 @@ uint8_t OnInternalCommand(uint32_t uCmdType, const char* pszText) {
 	return 1;
 }
 
-void onServerShutdown() {
-	Bot->quit();
-	delete Bot;
-
-	client_thread->detach();
-	delete client_thread;
-}
-
 /* General events */
 
 void onPlayerConnect(int32_t playerId) {
 	char pName[25];
 	g_Funcs->GetPlayerName(playerId, pName, 25);
 	std::string strName = pName;
-	SendDiscordMessage(":heavy_plus_sign: " + strName + " has joined the server");
+	SendDiscordMessage(":chart_with_upwards_trend: " + strName + " has joined the server");
 }
 
 void onPlayerDisconnect(int32_t playerId, vcmpDisconnectReason reason) {
 	char pName[25];
 	g_Funcs->GetPlayerName(playerId, pName, 25);
 	std::string strName = pName;
-	SendDiscordMessage(":heavy_minus_sign: " + strName + " has left the server [" + vcmp_PartReasons[reason] + "]");
+	SendDiscordMessage(":chart_with_downwards_trend: " + strName + " has left the server [" + vcmp_PartReasons[reason] + "]");
 }
 
 void onPlayerDeath(int32_t playerId, int32_t reason) {
 	char pName[25];
 	g_Funcs->GetPlayerName(playerId, pName, 25);
 	std::string strName = pName;
-	SendDiscordMessage(":dagger: " + strName + " died! [" + vcmp_WeaponNames[reason] + "]");
+	SendDiscordMessage(":skull: " + strName + " died! [" + vcmp_WeaponNames[reason] + "]");
 }
 
 void onPlayerWasted(int32_t playerId, int32_t killerId, int32_t reason, vcmpBodyPart bodyPart) {
@@ -83,6 +83,6 @@ uint8_t onPlayerMessage(int32_t playerId, const char* text) {
 	char pName[25];
 	g_Funcs->GetPlayerName(playerId, pName, 25);
 	std::string strName = pName;
-	SendDiscordMessage(":exclamation: " + strName + ": " + text);
+	SendDiscordMessage(":memo: " + strName + ": " + text);
 	return 1;
 }
