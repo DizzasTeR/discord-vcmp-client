@@ -6,6 +6,7 @@
 #include <thread>
 #include <vector>
 #include <fstream>
+#include <filesystem>
 #include <dpp/dpp.h>
 #include <dpp/nlohmann/json.hpp>
 

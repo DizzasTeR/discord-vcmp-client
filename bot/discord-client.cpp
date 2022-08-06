@@ -25,13 +25,23 @@ extern "C" EXPORT unsigned int VcmpPluginInit(PluginFuncs* pluginFuncs, PluginCa
 	pluginInfo->apiMinorVersion = PLUGIN_API_MINOR;
 
 	pluginCalls->OnServerInitialise = [] () -> uint8_t {
-		bot->start(dpp::st_return);
+		try {
+			bot->start(dpp::st_return);
+		}
+		catch(const dpp::exception& e) {
+			LOG(e.what(), "[DISCORD CRITICAL]");
+		}
 
 		return 1;
 	};
 
 	pluginCalls->OnServerShutdown = OnServerShutdown;
 	pluginCalls->OnPluginCommand = OnInternalCommand;
+
+	if(!std::filesystem::exists("settings.json")) {
+		LOG("No settings.json", "[DISCORD ERROR]");
+		return 0;
+	}
 
 	json settings = read_json_file("settings.json");
 	Settings::loadSettings(settings);
