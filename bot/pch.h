@@ -16,12 +16,6 @@
 #include <sqconfig.h>
 #include <vcmp.h>
 
-//#include <Settings.h>
-//#include <include/Utility.h>
-//#include <SquirrelEvents.h>
-//#include <SquirrelFunctions.h>
-//#include <vcmpEvents.h>
-
 using json = nlohmann::json;
 
 void LOG(const char *, const char * = "[DISCORD]");
