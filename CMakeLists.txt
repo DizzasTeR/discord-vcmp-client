@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 3.6)
 project(DDiscord)
 
-set(BUILD_SHARED_LIBS OFF)
+# set(BUILD_SHARED_LIBS OFF)
 option(BUILD_64 "" ON)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
@@ -16,5 +16,5 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 #		UPDATE_DISCONNECTED 1
 #	)
 	
-add_subdirectory(sleepy-discord)
+# add_subdirectory(DPP)
 add_subdirectory(bot)

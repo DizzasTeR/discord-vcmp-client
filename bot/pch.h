@@ -6,14 +6,20 @@
 #include <thread>
 #include <vector>
 #include <fstream>
-#include <sleepy_discord/websocketpp_websocket.h>
+#include <dpp/dpp.h>
+#include <dpp/nlohmann/json.hpp>
 
-#include <nlohmann/json.hpp>
 #include <SQImports.h>
 #include <SQModule.h>
 #include <squirrel.h>
 #include <sqconfig.h>
 #include <vcmp.h>
+
+//#include <Settings.h>
+//#include <include/Utility.h>
+//#include <SquirrelEvents.h>
+//#include <SquirrelFunctions.h>
+//#include <vcmpEvents.h>
 
 using json = nlohmann::json;
 

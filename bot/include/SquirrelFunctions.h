@@ -1,9 +1,11 @@
 #pragma once
 #include "pch.h"
 
+#include <include/Utility.h>
+
 extern HSQUIRRELVM sqvm;
 extern HSQAPI sqapi;
-extern SleepyDiscord::DiscordClient* Bot;
+extern dpp::cluster* bot;
 
 void register_global_func(HSQUIRRELVM vm, const char *name, SQFUNCTION function) {
 	sqapi->pushroottable(vm);
@@ -55,7 +57,8 @@ namespace SquirrelFuncs {
 			}
 
 			try {
-				Bot->sendMessage(channelID, std::string((char*)message));
+				dpp::message msg(channelID, std::string((char*) message));
+				bot->message_create(msg);
 			} catch(std::exception err) {
 				return sqapi->throwerror(v, (SQChar*)"Discord_SendMessageToChannel >> Failed to send message");
 			}
@@ -78,7 +81,9 @@ namespace SquirrelFuncs {
 				return sqapi->throwerror(v, (SQChar*)"Discord_SetStatus >> Setting an invalid status");
 			}
 
-			Bot->updateStatus(std::string((char*)status));
+			dpp::presence presence(dpp::presence_status::ps_online, dpp::activity(dpp::activity_type::at_game, std::string((char*) status), std::string(), std::string()));
+			bot->set_presence(presence);
+
 			return 1;
 		}
 		sqapi->pushbool(v, false);

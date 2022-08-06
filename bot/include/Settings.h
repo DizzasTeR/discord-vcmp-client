@@ -8,7 +8,7 @@ namespace Settings {
 	bool specialNicks = false;
 	bool specialMessages = false;
 
-	std::vector<long long int> channels;
+	std::vector<uint64_t> channels;
 
 	std::string token;
 	std::string prefix = "!";
@@ -47,8 +47,8 @@ namespace Settings {
 			Settings::specialMessages = settings["specialMessages"];
 
 		if(settings.find("channels") != settings.end()) {
-			json::const_iterator it;
-			for(it = settings["channels"].begin(); it != settings["channels"].end(); it++) {
+			//json::const_iterator it;
+			for(auto it = settings["channels"].begin(); it != settings["channels"].end(); it++) {
 				Settings::channels.push_back(it.value());
 			}
 		}
