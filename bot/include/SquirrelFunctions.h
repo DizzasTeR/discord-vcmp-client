@@ -68,6 +68,45 @@ namespace SquirrelFuncs {
 		return 1;
 	}
 
+	SQInteger Discord_SendMessageToChannelName(HSQUIRRELVM v) {
+		const SQInteger args = sqapi->gettop(v);
+		if(args == 3) {
+			const SQChar* channelName;
+			SQRESULT sqresult = sqapi->getstring(v, 2, &channelName);
+			if(SQ_FAILED(sqresult)) {
+				return sqresult;
+			}
+
+			const SQChar* message;
+			sqresult = sqapi->getstring(v, 3, &message);
+			if(SQ_FAILED(sqresult)) {
+				return sqresult;
+			}
+
+			if(std::string((char*) message).size() == 0) {
+				return sqapi->throwerror(v, (SQChar*) "Discord_SendMessageToChannelName >> Sending an empty/invalid message");
+			}
+
+			try {
+				dpp::cache<dpp::channel>* channelCache = dpp::get_channel_cache();
+				std::unordered_map<dpp::snowflake, dpp::channel*>& channels = channelCache->get_container();
+				std::shared_lock l(channelCache->get_mutex());
+
+				for(auto [id, channel] : channels) {
+					if(channel->name == channelName) {
+						bot->message_create(dpp::message(id, message));
+					}
+				}
+			}
+			catch(std::exception err) {
+				return sqapi->throwerror(v, (SQChar*) "Discord_SendMessageToChannelName >> Failed to send message");
+			}
+			return 1;
+		}
+		sqapi->pushbool(v, false);
+		return 1;
+	}
+
 	SQInteger Discord_SetStatus(HSQUIRRELVM v) {
 		const SQInteger args = sqapi->gettop(v);
 		if(args == 2) {
@@ -94,6 +133,7 @@ namespace SquirrelFuncs {
 		#define REGISTERSQFUNCTION(name) register_global_func(*v, #name, SquirrelFuncs::name)
 		REGISTERSQFUNCTION(Discord_SendMessage);
 		REGISTERSQFUNCTION(Discord_SendMessageToChannel);
+		REGISTERSQFUNCTION(Discord_SendMessageToChannelName);
 		REGISTERSQFUNCTION(Discord_SetStatus);
 		LOG("Discord Functions registered", "[LOG]");
 	}
