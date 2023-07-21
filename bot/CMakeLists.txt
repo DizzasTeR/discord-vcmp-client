@@ -1,23 +1,23 @@
+set(OPTION_ARCHITECTURE "x64" CACHE STRING "Architecture")
+
 add_library(DDiscord SHARED
    	discord-client.cpp
 )
 
 # set c++ standard 17
-set_target_properties(DDiscord PROPERTIES
-   	CXX_STANDARD 17
+set_target_properties(${PROJECT_NAME} PROPERTIES
+	CXX_STANDARD 17
+	CXX_STANDARD_REQUIRED ON
 )
+
+add_compile_options(-fpermissive -fPIC)
+
+add_subdirectory(${PROJECT_SOURCE_DIR}/DPP dpp)
+target_link_libraries(DDiscord PUBLIC dpp)
 
 target_include_directories(DDiscord
 	PRIVATE
-		${PROJECT_SOURCE_DIR}/include/dpp-10.0
-		${PROJECT_SOURCE_DIR}/bot
-		${PROJECT_SOURCE_DIR}/bot/include
+	${PROJECT_SOURCE_DIR}/bot
+	${PROJECT_SOURCE_DIR}/bot/include
+	${PROJECT_SOURCE_DIR}/DPP/include
 )
-
-target_link_directories(DDiscord PRIVATE ${PROJECT_SOURCE_DIR}/lib/dpp-10.0)
-
-if("${CMAKE_GENERATOR_PLATFORM}" STREQUAL "x64")
-	target_link_libraries(DDiscord dpp.lib)
-else()
-	target_link_libraries(DDiscord dpp32.lib)
-endif()
